@@ -1,0 +1,18 @@
+header {
+  font-family: 'Spline Sans Mono', monospace;
+  background-color: orange;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+}
+body {
+  font-family: 'Spline Sans Mono', monospace;
+  margin: 0;
+  box-sizing: 30px;
+  background-color: lightblue;
+  text-align: center;
+}
+.intro {
+  font-size: 40px;
+  text-decoration: underline;
+}
