@@ -16,3 +16,9 @@ body {
   font-size: 40px;
   text-decoration: underline;
 }
+.logo {
+  height: 150px;
+  width: auto;
+  justify-content: center;
+  padding-bottom: 20px;
+}
