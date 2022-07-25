@@ -1,35 +1,32 @@
-let pokemonRepository = (function () {
+let pokemonRepository2 = (function () {
 
   let pokemonList = [
-    {
-        name: 'Dewgong',
-        height: 1.7,
-        type: ['ice','water']
-    },
-    {
-        name: 'Hoppip',
-        height: .4,
-        type: ['grass','flying']
-    },
-    {
-        name: 'Gardevoir',
-        height: 1.6,
-        type: ['psychic','fairy']
-    }
+    {name: 'Dewgong', height: 1.7, type:['ice','water']},
+    {name: 'Hoppip', height: .4, type:['grass','flying']},
+    {name: 'Gardevoir', height: 1.6, type:['psychic','fairy']}
   ];
 
+  function add(pokemon) {
+    pokemonList.push(pokemon);
+  }
+
+  function getAll() {
+    return pokemonList;
+  }
 
   return {
-    add: function(pokemon) {
-      pokemonList.push(pokemon);
-    },
-    getAll: function() {
-      return pokemonList;
-    }
+    add: add,
+    getAll: getAll
   };
 
 })();
 
-document.write(pokemonRepository.getAll());
-pokemonRepository.add({ name: 'Pikachu', height: 1.7, type:['psychic', 'grass'] });
-document.write(pokemonRepository.getAll());
+let item = [
+  {name: 'Pikachu', height: 2.7, type:['grass','fairy']}
+];
+
+pokemonRepository2.add(item);
+
+pokemonRepository2.getAll().forEach(function(pokemonList) {
+  document.write('<p>' + pokemonList.name + ' is ' + pokemonList.height + ' meters tall and is ' + pokemonList.type + ' types! </p>');
+});
