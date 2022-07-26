@@ -24,6 +24,16 @@ let pokemonRepository2 = (function () {
     {name: 'Gardevoir', height: 1.6, type:['psychic','fairy']}
   ];
 
+<<<<<<< Updated upstream
+=======
+  function add(pokemon) {
+    pokemonList.push(pokemon);
+  }
+  
+  function getAll() {
+    return pokemonList;
+  }
+>>>>>>> Stashed changes
 
   return {
     add: function(pokemon) {
