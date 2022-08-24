@@ -3,7 +3,6 @@ let pokemonRepository2 = (function () {
   const pokemonList = [];
   const apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
   const modalContainer = document.querySelector('#modal-container');
-  modalContainer.classList.add('modal-dialog-centered')
 
   function add(pokemon) {
     pokemonList.push(pokemon);
@@ -18,8 +17,9 @@ let pokemonRepository2 = (function () {
     let listItem = document.createElement('li');
     let button = document.createElement('button');
     button.innerText = pokemon.name;
-    button.classList.add('btn-lg');
-    button.classList.add('btn-outline-dark');
+    button.classList.add('btn-lg', 'btn-outline-dark');
+    button.setAttribute('data-toggle', 'modal');
+    button.setAttribute('data-target', '#modal-container');
     listItem.appendChild(button);
     pokemonList.appendChild(listItem);
     button.addEventListener('click', function(){showDetails(pokemon)});
@@ -56,40 +56,26 @@ let pokemonRepository2 = (function () {
 
   function showDetails(item) {
     pokemonRepository2.loadDetails(item).then(function showModal(name, height, image) {
-        modalContainer.innerHTML = '';
 
-        let modal = document.createElement('div');
-        modal.classList.add('modal');
+        let modal = document.querySelector('.modal');
 
-        let closeButtonElement = document.createElement('button');
-        closeButtonElement.classList.add('modal-footer');
-        closeButtonElement.innerText = 'Close';
-        closeButtonElement.addEventListener('click', hideModal);
-
-        let nameElement = document.createElement('h1');
-        nameElement.classList.add('.modal-title');
+        let nameElement = document.querySelector('#modalTitle');
         nameElement.innerText = item.name;
 
-        let contentElement = document.createElement('p');
-        contentElement.classList.add('.modal-body');
-        contentElement.innerText = item.height + ' meters long! ';
+        let contentElement = document.querySelector('.modal-body');
+        contentElement.innerText = (item.height + ' meters long! ');
 
         let photoElement = document.createElement('img');
-        photoElement.classList.add('.modal-body');
         photoElement.src = item.imageUrl;
 
-        modal.appendChild(nameElement);
-        modal.appendChild(contentElement);
-        modal.appendChild(photoElement);
-        modalContainer.appendChild(modal);
-        modal.appendChild(closeButtonElement);
+        ///modalContainer.innerHTML = '';
 
+      ///  modal.appendChild(nameElement);
+      ///  modal.appendChild(contentElement);
+      //  modal.appendChild(photoElement);
+      //  modalContainer.appendChild(modal);
 
-        modalContainer.classList.add('is-visible');
     });
-    function hideModal() {
-      modalContainer.classList.remove('is-visible');
-    };
 
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
