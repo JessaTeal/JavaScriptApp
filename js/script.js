@@ -68,12 +68,12 @@ let pokemonRepository2 = (function () {
         let photoElement = document.createElement('img');
         photoElement.src = item.imageUrl;
 
-        ///modalContainer.innerHTML = '';
+        //modalContainer.innerHTML = '';
 
-      ///  modal.appendChild(nameElement);
-      ///  modal.appendChild(contentElement);
-      //  modal.appendChild(photoElement);
-      //  modalContainer.appendChild(modal);
+        //modal.appendChild(nameElement);
+        //modal.appendChild(contentElement);
+        //modal.appendChild(photoElement);
+        //modalContainer.appendChild(modal);
 
     });
 
