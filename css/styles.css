@@ -18,7 +18,7 @@ body {
 }
 .modal-body {
   background: lightblue;
-  text-align: center;
+  justify-content: center;
 }
 .intro {
   font-size: 40px;

@@ -67,16 +67,12 @@ let pokemonRepository2 = (function () {
 
         let photoElement = document.createElement('img');
         photoElement.src = item.imageUrl;
-
-        //modalContainer.innerHTML = '';
-
-        //modal.appendChild(nameElement);
-        //modal.appendChild(contentElement);
-        //modal.appendChild(photoElement);
-        //modalContainer.appendChild(modal);
-
+        contentElement.appendChild(photoElement);
     });
 
+    function hideModal(){
+      modalContainer.classList.remove('is-visible');
+    };
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
         hideModal();
