@@ -5,24 +5,24 @@ let pokemonRepository2 = (function () {
 
   function add(pokemon) {
     pokemonList.push(pokemon);
-  };
+  }
 
   function getAll() {
     return pokemonList;
-  };
+  }
 
   function addListItem(pokemon){
     let pokemonList = document.querySelector('.pokemon-list');
     let listItem = document.createElement('li');
     let button = document.createElement('button');
     button.innerText = pokemon.name;
-    button.classList.add('btn-lg', 'btn-outline-dark');
+    button.classList.add('btn-lg', 'btn-outline-dark', 'col-sm-3');
     button.setAttribute('data-toggle', 'modal');
     button.setAttribute('data-target', '#modal-container');
     listItem.appendChild(button);
     pokemonList.appendChild(listItem);
     button.addEventListener('click', function(){showDetails(pokemon)});
-  };
+  }
 
   function loadList() {
     return fetch(apiUrl).then(function (response) {
@@ -51,12 +51,13 @@ let pokemonRepository2 = (function () {
     }).catch(function(e) {
       console.error(e);
     });
-  };
+  }
 
   function showDetails(item) {
-    pokemonRepository2.loadDetails(item).then(function showModal(name, height, image) {
+    pokemonRepository2.loadDetails(item).then(function showModal() {
 
         let modal = document.querySelector('.modal');
+        modal.classList.add('.modal');
 
         let nameElement = document.querySelector('#modalTitle');
         nameElement.innerText = item.name;
@@ -74,25 +75,8 @@ let pokemonRepository2 = (function () {
 
         modalBody.appendChild(contentElement);
         modalBody.appendChild(photoElement);
-
-
     });
-
-    function hideModal(){
-      modalContainer.classList.remove('is-visible');
-    };
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
-        hideModal();
-      };
-    });
-    modalContainer.addEventListener('click', (e) => {
-      let target = e.target;
-      if (target === modalContainer){
-        hideModal();
-      };
-    });
-  };
+  }
 
   return {
     add: add,
