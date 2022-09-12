@@ -16,7 +16,7 @@ let pokemonRepository2 = (function () {
     let listItem = document.createElement('li');
     let button = document.createElement('button');
     button.innerText = pokemon.name;
-    button.classList.add('btn-lg', 'btn-outline-dark', 'col-sm-3');
+    button.classList.add('btn-lg', 'col-sm-8');
     button.setAttribute('data-toggle', 'modal');
     button.setAttribute('data-target', '#modal-container');
     listItem.appendChild(button);
@@ -47,7 +47,10 @@ let pokemonRepository2 = (function () {
     }).then(function (details) {
       item.imageUrl = details.sprites.front_default;
       item.height = details.height;
-      item.types = details.types;
+      item.types = [];
+      for(var i = 0; i < details.types.length; i++) {
+        item.types.push(details.types[i].type.name);
+      }
     }).catch(function(e) {
       console.error(e);
     });
@@ -69,12 +72,17 @@ let pokemonRepository2 = (function () {
         contentElement.innerText = (item.height + ' meters long! ');
 
         let photoElement = document.createElement('img');
+        photoElement.setAttribute('width', '250px');
         photoElement.src = item.imageUrl;
+
+        let infoElement = document.createElement('div');
+        infoElement.innerText = 'Types: ' + item.types;
 
         modalBody.innerHTML = '';
 
         modalBody.appendChild(contentElement);
         modalBody.appendChild(photoElement);
+        modalBody.appendChild(infoElement);
     });
   }
 
